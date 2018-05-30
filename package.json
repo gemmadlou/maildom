@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "jest": "^23.1.0",
+    "nodemailer": "^4.6.5"
+  },
+  "name": "lambda-email",
+  "version": "1.0.0",
+  "main": "handler.js",
+  "directories": {
+    "test": "tests"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node_modules/.bin/jest tests",
+    "test:watch": "node_modules/.bin/jest tests --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
