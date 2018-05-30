@@ -1,42 +1,62 @@
 const nodemailer = require('nodemailer');
+const Meta = require('./meta');
+const Contents = require('./contents');
+const SMTPConnection = require('./smtp-connection');
 
 module.exports = class Mailer {
     constructor(meta, contents, smtpConnection) {
+
+        if (meta instanceof Meta === false) {
+            return new Error('meta configuration is invalid');
+        }
+
+        if (contents instanceof Contents === false) {
+            return new Error('contents configuration is invalid');
+        }
+    
+
+        if (smtpConnection instanceof SMTPConnection === false) {
+            return new Error('connection configuration is invalid');
+        }
+    
         this.meta = meta;
         this.contents = contents;
-        this.smtpConnection = smtpConnection;
+        this.connection = smtpConnection;
     }
 
-    send(meta, contents, smtpConnection) {
-        meta = {
-            from: 'Fred Foo <foo@example.com>',
-            to: 'bar@example.com',
-            subject: 'Hello'
+    send() {
+        let options = {
+            from: `${this.meta.senderName} <${this.meta.senderEmail}>`,
+            to: this.meta.recipientEmail,
+            subject: this.meta.subject,
+            text: this.contents.plainEmail,
+            html: this.contents.plainEmail
         }
 
-        contents = {
-            text: 'Hello world',
-            html: '<b>Hello world</b>'
-        }
+        return new Promise((resolve, reject) => {
+            this.transporter().sendMail(options, (error, info) => {
+                if (error) {
+                    reject(error);
+                }
 
-        let options = Object.assign({}, meta, contents);
+                resolve(info);
 
-        const transporter = nodemailer.createTransport({
-            host: 'smtp.ethereal.email',
-            port: 587,
-            auth: {
-                user: 'vrwfskw2o4hhk6x7@ethereal.email',
-                pass: '94AzrJfHKR3wPxUB8r'
-            }
+                
+                console.log('Message sent: %s', info.messageId);
+    
+                console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+            });
         });
+    }
 
-        transporter.sendMail(options, (error, info) => {
-            if (error) {
-                return console.log(error);
+    transporter() {
+        return nodemailer.createTransport({
+            host: this.connection.host,
+            port: this.connection.port,
+            auth: {
+                user: this.connection.user,
+                pass: this.connection.password
             }
-            console.log('Message sent: %s', info.messageId);
-            // Preview only available when sending through an Ethereal account
-            console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
         });
     }
 }

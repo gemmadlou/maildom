@@ -1,23 +1,23 @@
 'use strict';
 
-const Mailer = require('./src/mailer');
+const main = require('./src/main');
 
-module.exports.test = () => {
-  let mailer = new Mailer;
-  mailer.send();
+const response = (callback, event) => (code, message) => {
+  callback(null, {
+    statusCode: code,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
+    body: JSON.stringify({
+      message: message,
+      input: event,
+    })
+  });
 }
 
 module.exports.email = (event, context, callback) => {
-  const response = {
-    statusCode: 200,
-    headers: {
-      'Access-Control-Allow-Origin': '*', // Required for CORS support to work
-    },
-    body: JSON.stringify({
-      message: 'Go Serverless v1.0! Your function executed successfully!',
-      input: event,
-    }),
-  };
+  let responder = response(callback, event);
 
-  callback(null, response);
+  main().then(response => responder(200, 'Email sent successfully'))
+    .catch(error => responder(400, error.message));
 };
