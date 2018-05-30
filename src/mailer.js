@@ -1,6 +1,12 @@
 const nodemailer = require('nodemailer');
 
 module.exports = class Mailer {
+    constructor(meta, contents, smtpConnection) {
+        this.meta = meta;
+        this.contents = contents;
+        this.smtpConnection = smtpConnection;
+    }
+
     send(meta, contents, smtpConnection) {
         meta = {
             from: 'Fred Foo <foo@example.com>',
