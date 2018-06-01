@@ -11,24 +11,41 @@ sending off emails require a server or at least, SaaS.
 
 If all you want is an endpoint that takes a few fields and sends off an email, it's a nice alternative that doesn't require the maintenance of a server.
 
+## Is it ready for production?
+
+Unhappy paths and proper error responses are needed for more helpful API responses. I'll add those in. Also recaptcha is a helpful addition to prevent people spamming your Gateway.
+
+## How to use it
+
+Clone this repository and follow the 'Getting set up'.
+
 ## Pre-requisites
 
-* Serverless (version ^1.27.3)
+* [Serverless](https://serverless.com/framework/docs/getting-started/) (version ^1.27.3)
 * Node (version 8)
 * NPM
-* AWS Account (with IAM access)
+* AWS Account (with IAM access)  
+  
+  You will IAM credentials configured with AWS. You can use serverless to set these up:
+
+  ```shell
+  serverless config credentials --provider aws --key XXXXXXX --secret XXXXXXX
+  ```
+  
+  If you have more than 1 set of credentials, you can create a new custom profile the Serverless way.
+
+  ```shell
+  serverless config credentials --provider aws --key XXXXXXX --secret XXXXXXX --profile XXXXXXX
+  ```
 * SMTP Email 
   ([Using a fake SMTP email for testing](#testing-locally))
 
 ## Getting set up
 
-#### With a custom profile
-
-```
-serverless config credentials --provider aws --key XXXXXXX --secret XXXXXXX --profile XXXXXXX
-```
-
-> Note, profile is optional
+* In the serverless.yml
+  * Set the service name
+  * Change the function name to be more relevant
+  * Set your profile name or remove if irrelevant
 
 ## Testing locally
 
@@ -61,6 +78,7 @@ serverless deploy
 ## Roadmap
 
 - [ ] An easy npm installation of the lambda service
+- [ ] Optional re-captcha
 
 ## License
 
