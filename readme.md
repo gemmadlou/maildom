@@ -1,6 +1,6 @@
 # Maildom
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/92f9e2ecc18ac0c30cb2/maintainability)](https://codeclimate.com/github/gemmadlou/maildom/maintainability) [![codecov](https://codecov.io/gh/gemmadlou/maildom/branch/master/graph/badge.svg)](https://codecov.io/gh/gemmadlou/maildom)
+[![Build Status](https://travis-ci.org/gemmadlou/maildom.svg?branch=master)](https://travis-ci.org/gemmadlou/maildom)  [![Maintainability](https://api.codeclimate.com/v1/badges/92f9e2ecc18ac0c30cb2/maintainability)](https://codeclimate.com/github/gemmadlou/maildom/maintainability) [![codecov](https://codecov.io/gh/gemmadlou/maildom/branch/master/graph/badge.svg)](https://codecov.io/gh/gemmadlou/maildom)
 
 Node-based serverless SMTP emailer.
 
@@ -70,6 +70,7 @@ serverless deploy
 
 ## ToDo
 
+- [ ] 100% Code coverage
 - [x] Send query parameters
 - [x] Use AWS Environment variables to set smtp information
 - [ ] Unhappy paths especially for nicer error responses
