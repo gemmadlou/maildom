@@ -55,8 +55,7 @@ module.exports = class Mailer {
             from: `${this.meta.senderName} <${this.meta.senderEmail}>`,
             to: this.meta.recipientEmail,
             subject: this.meta.subject,
-            text: this.contents.plainEmail,
-            html: this.contents.plainEmail
+            text: this.contents.plainEmail
         }
     }
 }

@@ -2,7 +2,7 @@
 
 const main = require('./src/main');
 
-const response = (callback, event) => (code, message, data) => {
+const response = (callback) => (code, message, data) => {
   callback(null, {
     statusCode: code,
     headers: {
@@ -10,18 +10,20 @@ const response = (callback, event) => (code, message, data) => {
     },
     body: JSON.stringify({
       message: message,
-      input: event,
       data: data
     })
   });
 }
 
 module.exports.email = (event, context, callback) => {
-console.log(event)
-  let body = {}; //JSON.parse(event.body);
-  let environment = Object.assign({}, {
+
+  let body = JSON.parse(event.body);
+  let data = Object.assign({}, {
     senderEmail: process.env.SENDER_EMAIL,
     senderName: process.env.SENDER_NAME,
+    recipientEmail: body.email,
+    subjectLine: body.subject,
+    content: body.content,
     smtp: {
       host: process.env.SMTP_HOST,
       port: process.env.SMTP_PORT,
@@ -30,8 +32,9 @@ console.log(event)
     }
   });
 
-  let responder = response(callback, event);
+  let responder = response(callback);
 
-  main(Object.assign({}, body, environment)).then(response => responder(200, 'Email sent successfully', response))
+  main(data)
+    .then(response => responder(200, 'Email sent successfully', response))
     .catch(error => responder(400, error.message));
 };

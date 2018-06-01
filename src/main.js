@@ -24,6 +24,9 @@ module.exports = (options) => {
     let serialize = Object.assign({
       senderEmail: '',
       senderName: '',
+      recipientEmail: '',
+      subjectLine: '',
+      content: '',
       smtp: {
         port: 587,
         host: ''
@@ -33,11 +36,11 @@ module.exports = (options) => {
     let meta = new Meta(
       serialize.senderName, 
       serialize.senderEmail, 
-      'bar@example.com', 
-      'Hello'
+      serialize.recipientEmail, //'bar@example.com', 
+      serialize.subjectLine
     );
     
-    let contents = new Contents('Hi world!');
+    let contents = new Contents(serialize.content);
 
     let connection = new SMTPConnection(
         serialize.smtp.port,
