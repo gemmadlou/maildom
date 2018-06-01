@@ -5,12 +5,13 @@
 # uses to deploy your code to your provider of choice
 
 # The `service` block is the name of the service
-service: lambda-email
+service: maildom-kisumu
 
 # The `provider` block defines where your service will be deployed
 provider:
   name: aws
   runtime: nodejs8.10
+  profile: bignorth
 
 # The `functions` block defines what code to deploy
 functions:

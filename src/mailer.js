@@ -13,7 +13,6 @@ module.exports = class Mailer {
         if (contents instanceof Contents === false) {
             return new Error('contents configuration is invalid');
         }
-    
 
         if (smtpConnection instanceof SMTPConnection === false) {
             return new Error('connection configuration is invalid');
@@ -25,22 +24,13 @@ module.exports = class Mailer {
     }
 
     send() {
-        let options = {
-            from: `${this.meta.senderName} <${this.meta.senderEmail}>`,
-            to: this.meta.recipientEmail,
-            subject: this.meta.subject,
-            text: this.contents.plainEmail,
-            html: this.contents.plainEmail
-        }
-
         return new Promise((resolve, reject) => {
-            this.transporter().sendMail(options, (error, info) => {
+            this.transporter().sendMail(this.options(), (error, info) => {
                 if (error) {
                     reject(error);
                 }
 
                 resolve(info);
-
                 
                 console.log('Message sent: %s', info.messageId);
     
@@ -58,5 +48,15 @@ module.exports = class Mailer {
                 pass: this.connection.password
             }
         });
+    }
+    
+    options() {
+        return {
+            from: `${this.meta.senderName} <${this.meta.senderEmail}>`,
+            to: this.meta.recipientEmail,
+            subject: this.meta.subject,
+            text: this.contents.plainEmail,
+            html: this.contents.plainEmail
+        }
     }
 }

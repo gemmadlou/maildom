@@ -21,15 +21,29 @@ const successResponse = (event) => response(200, 'Email sent successfully', even
 const errorResponse = (error, event) => response(200, error.message, event);
 
 module.exports = (options) => {
-    let serialize = Object.assign({}, options);
+    let serialize = Object.assign({
+      senderEmail: '',
+      senderName: '',
+      smtp: {
+        port: 587,
+        host: ''
+      }
+    }, options);
 
-    let meta = new Meta('Fred Foo', 'foo@example.com', 'bar@example.com', 'Hello');
+    let meta = new Meta(
+      serialize.senderName, 
+      serialize.senderEmail, 
+      'bar@example.com', 
+      'Hello'
+    );
+    
     let contents = new Contents('Hi world!');
+
     let connection = new SMTPConnection(
-        587,
-        'smtp.ethereal.email',
-        'vrwfskw2o4hhk6x7@ethereal.email',
-        '94AzrJfHKR3wPxUB8r'
+        serialize.smtp.port,
+        serialize.smtp.host,
+        serialize.smtp.user,
+        serialize.smtp.pass
     );
 
     let mailer = new Mailer(meta, contents, connection);
