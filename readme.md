@@ -1,16 +1,34 @@
 # Maildom
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/92f9e2ecc18ac0c30cb2/maintainability)](https://codeclimate.com/github/gemmadlou/maildom/maintainability) 
+[![Maintainability](https://api.codeclimate.com/v1/badges/92f9e2ecc18ac0c30cb2/maintainability)](https://codeclimate.com/github/gemmadlou/maildom/maintainability) [![codecov](https://codecov.io/gh/gemmadlou/maildom/branch/master/graph/badge.svg)](https://codecov.io/gh/gemmadlou/maildom)
 
 Node-based serverless SMTP emailer.
+
+## Reason for this project
+
+When working with Jamstack or static html websites, additional functionality like
+sending off emails require a server or at least, SaaS.
+
+If all you want is an endpoint that takes a few fields and sends off an email, it's a nice alternative that doesn't require the maintenance of a server.
+
+## Pre-requisites
+
+* Serverless (version ^1.27.3)
+* Node (version 8)
+* NPM
+* AWS Account (with IAM access)
+* SMTP Email 
+  ([Using a fake SMTP email for testing](#testing-locally))
 
 ## Getting set up
 
 #### With a custom profile
 
 ```
-serverless config credentials --provider aws --key {} --secret {} --profile {}
+serverless config credentials --provider aws --key XXXXXXX --secret XXXXXXX --profile XXXXXXX
 ```
+
+> Note, profile is optional
 
 ## Testing locally
 
@@ -39,3 +57,19 @@ serverless deploy
 - [x] Use AWS Environment variables to set smtp information
 - [ ] Unhappy paths especially for nicer error responses
 - [ ] Dynamic variables in serverless.yml to make it multi-environment friendly and reusable across multiple projects
+
+## Roadmap
+
+- [ ] An easy npm installation of the lambda service
+
+## License
+
+[GPLv2.1](https://github.com/gemmadlou/maildom/blob/master/LICENSE)
+
+> Here's a nice 4 minute [explanation](https://www.youtube.com/watch?v=JlIrSMzF8T4) of the difference between GPL and the Lesser GPL. This library uses the Lesser GPL.
+
+## Author
+
+Gemma Black
+
+Twitter: @GemmaBlackUk

@@ -3,8 +3,8 @@
     "jest": "^23.1.0",
     "nodemailer": "^4.6.5"
   },
-  "name": "lambda-email",
-  "version": "1.0.0",
+  "name": "maildom",
+  "version": "0.0.1",
   "main": "handler.js",
   "directories": {
     "test": "tests"
@@ -16,5 +16,9 @@
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
+  }
 }
