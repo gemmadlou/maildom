@@ -37,5 +37,5 @@ serverless deploy
 
 - [x] Send query parameters
 - [x] Use AWS Environment variables to set smtp information
-- [ ] Unhappy paths
+- [ ] Unhappy paths especially for nicer error responses
 - [ ] Dynamic variables in serverless.yml to make it multi-environment friendly and reusable across multiple projects
