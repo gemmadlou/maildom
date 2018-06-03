@@ -4,6 +4,7 @@ module.exports = class SMTPConnection {
         this.host = host;
         this.user = user;
         this.password = password;
+        this.secure = true;
         Object.freeze(this);
     }
 }

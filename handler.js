@@ -3,6 +3,7 @@
 const main = require('./src/main');
 
 const response = (callback) => (code, message, data) => {
+  console.log(code, message);
   callback(null, {
     statusCode: code,
     headers: {

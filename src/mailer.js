@@ -27,20 +27,17 @@ module.exports = class Mailer {
         return new Promise((resolve, reject) => {
             this.transporter().sendMail(this.options(), (error, info) => {
                 if (error) {
-                    reject(error);
+                    return reject(error);
                 }
 
                 resolve(info);
-                
-                console.log('Message sent: %s', info.messageId);
-    
-                console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
             });
         });
     }
 
     transporter() {
         return nodemailer.createTransport({
+            secure: this.connection.secure,
             host: this.connection.host,
             port: this.connection.port,
             auth: {

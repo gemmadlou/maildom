@@ -13,7 +13,10 @@ If all you want is an endpoint that takes a few fields and sends off an email, i
 
 ## Is it ready for production?
 
-Unhappy paths and proper error responses are needed for more helpful API responses. I'll add those in. Also recaptcha is a helpful addition to prevent people spamming your Gateway.
+TLDR, no.
+
+* Unhappy paths and proper error responses are needed for more helpful API responses.
+* Also recaptcha is a helpful addition to prevent people spamming your Gateway.
 
 ## How to use it
 
