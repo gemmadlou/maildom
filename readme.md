@@ -1,26 +1,39 @@
-# Maildom
+<p align="center">in progress...</p>
+
+<h1 align="center">
+  <a href="https://github.com/gemmadlou/maildom"><img src="./docs/img/maildom.jpg" alt="Markdownify" width="100%" style="max-width: 100%" title="Maildom" alt="Maildom"></a>
+  <br>
+</h1>
+
+<p align="center">
 
 [![Build Status](https://travis-ci.org/gemmadlou/maildom.svg?branch=master)](https://travis-ci.org/gemmadlou/maildom)  [![Maintainability](https://api.codeclimate.com/v1/badges/92f9e2ecc18ac0c30cb2/maintainability)](https://codeclimate.com/github/gemmadlou/maildom/maintainability) [![codecov](https://codecov.io/gh/gemmadlou/maildom/branch/master/graph/badge.svg)](https://codecov.io/gh/gemmadlou/maildom)
 
-Node-based serverless SMTP emailer.
+</p>
 
-## Reason for this project
+<h4 align="center">A serverless Nodejs SMTP email service using AWS Lambda & API Gateway.</a>
 
-When working with Jamstack or static html websites, additional functionality like
+## Motivation
+
+When working with <a href="https://jamstack.org/">Jamstack</a> or static html websites, additional functionality like
 sending off emails require a server or at least, SaaS.
 
 If all you want is an endpoint that takes a few fields and sends off an email, it's a nice alternative that doesn't require the maintenance of a server.
 
 ## Is it ready for production?
 
-TLDR, no.
+TLDR, I wish, but no.
 
-* Unhappy paths and proper error responses are needed for more helpful API responses.
+You can take it and build on it if you like though.
+
+#### What still needs doing?
+
+* Unhappy paths and proper error responses.
 * Also recaptcha is a helpful addition to prevent people spamming your Gateway.
 
 ## How to use it
 
-Clone this repository and follow the 'Getting set up'.
+Clone this repository and follow the "Get set up" guide.
 
 ## Pre-requisites
 
@@ -43,7 +56,7 @@ Clone this repository and follow the 'Getting set up'.
 * SMTP Email 
   ([Using a fake SMTP email for testing](#testing-locally))
 
-## Getting set up
+## Get set up
 
 * In the serverless.yml
   * Set the service name
