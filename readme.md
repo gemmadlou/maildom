@@ -138,7 +138,7 @@ SMTP_USER
 * [Jest](https://facebook.github.io/jest/)
 * [Canva](https://www.canva.com/)
 * [Postman](https://www.getpostman.com/)
-* [Maildom](https://github.com/matiassingers/awesome-readme)
+* [Awesome Readme](https://github.com/matiassingers/awesome-readme)
 
 ## License
 
