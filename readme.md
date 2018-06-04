@@ -1,22 +1,22 @@
-<p align="center">in progress...</p>
+<p align="center">coming soon</p>
 
 <h1 align="center">
   <a href="https://github.com/gemmadlou/maildom"><img src="./docs/img/maildom.jpg" alt="Markdownify" width="100%" style="max-width: 100%" title="Maildom" alt="Maildom"></a>
   <br>
 </h1>
 
-<p align="center">
+<div align="center">
 
 [![Build Status](https://travis-ci.org/gemmadlou/maildom.svg?branch=master)](https://travis-ci.org/gemmadlou/maildom)  [![Maintainability](https://api.codeclimate.com/v1/badges/92f9e2ecc18ac0c30cb2/maintainability)](https://codeclimate.com/github/gemmadlou/maildom/maintainability) [![codecov](https://codecov.io/gh/gemmadlou/maildom/branch/master/graph/badge.svg)](https://codecov.io/gh/gemmadlou/maildom)
 
-</p>
+</div>
 
 <h4 align="center">A serverless Nodejs SMTP email service using AWS Lambda & API Gateway.</a>
 
 ## Motivation
 
-When working with <a href="https://jamstack.org/">Jamstack</a> or static html websites, additional functionality like
-sending off emails require a server or at least, SaaS.
+When working with <a href="https://jamstack.org/" target="_blank">Jamstack</a> or static html websites, additional functionality like
+sending off emails require a server or at least, <a href="https://mailchimp.com/features/landing-pages/" target="__blank">SaaS</a>.
 
 If all you want is an endpoint that takes a few fields and sends off an email, it's a nice alternative that doesn't require the maintenance of a server.
 
@@ -26,10 +26,7 @@ TLDR, I wish, but no.
 
 You can take it and build on it if you like though.
 
-#### What still needs doing?
-
-* Unhappy paths and proper error responses.
-* Also recaptcha is a helpful addition to prevent people spamming your Gateway.
+**What still needs doing?** [Read here](#todo)
 
 ## How to use it
 
@@ -84,6 +81,42 @@ node -e 'require("./handler").email({body: "{\"email\": \"123@abc.com\", \"subje
 serverless deploy
 ```
 
+## Configure environment variables in AWS
+
+Log into AWS
+
+Go into the AWS Lambda panel
+
+Go the deployed function
+
+Add the environment variables
+
+<img src="./docs/img/environment-vars.png" width="100%" style="max-width: 100%;">
+
+#### Variabales
+
+SENDER_EMAIL
+
+SENDER_NAME
+
+SMTP_HOST
+
+SMTP_PASS
+
+SMTP_PORT
+
+SMTP_USER
+
+## API
+
+```json
+{
+	"email": "you@you.com",
+	"subject": "Maildom",
+	"content": "Hi world!\n\rMaildom here"
+}
+```
+
 ## ToDo
 
 - [ ] 100% Code coverage
@@ -96,6 +129,16 @@ serverless deploy
 
 - [ ] An easy npm installation of the lambda service
 - [ ] Optional re-captcha
+- [ ] HTML Email
+
+## Credits
+
+* [Nodemailer](https://github.com/nodemailer/nodemailer)
+* [Serverless](https://serverless.com)
+* [Jest](https://facebook.github.io/jest/)
+* [Canva](https://www.canva.com/)
+* [Postman](https://www.getpostman.com/)
+* [Maildom](https://github.com/matiassingers/awesome-readme)
 
 ## License
 
@@ -107,4 +150,4 @@ serverless deploy
 
 Gemma Black
 
-Twitter: @GemmaBlackUk
+Twitter: <a href="https://twitter.com/GemmaBlackUK" target="_blank">@GemmaBlackUk</a>
