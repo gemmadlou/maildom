@@ -9,7 +9,9 @@
   "directories": {
     "test": "tests"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "monorepo": "^1.2.2"
+  },
   "scripts": {
     "test": "node_modules/.bin/jest tests",
     "test:watch": "node_modules/.bin/jest tests --watch"

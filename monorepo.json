@@ -1,0 +1,4 @@
+{
+    "adapter": "yarn",
+    "packages": ["packages/*"]
+}

@@ -36,7 +36,7 @@ module.exports = (options) => {
     let meta = new Meta(
       serialize.senderName, 
       serialize.senderEmail, 
-      serialize.recipientEmail, //'bar@example.com', 
+      serialize.recipientEmail,
       serialize.subjectLine
     );
     
