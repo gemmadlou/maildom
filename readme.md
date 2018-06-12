@@ -39,7 +39,7 @@ Clone this repository and follow the "Get set up" guide.
 * NPM
 * AWS Account (with IAM access)  
   
-  You will IAM credentials configured with AWS. You can use serverless to set these up:
+  You will need IAM credentials configured with AWS. You can use serverless to set these up:
 
   ```shell
   serverless config credentials --provider aws --key XXXXXXX --secret XXXXXXX
